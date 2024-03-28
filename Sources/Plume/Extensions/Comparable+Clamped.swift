@@ -1,6 +1,6 @@
 //
-//  Comparable+Clamp.swift
-//  
+//  Comparable+Clamped.swift
+//
 //
 //  Created by Duncan on 3/27/24.
 //
