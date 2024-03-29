@@ -14,7 +14,7 @@ import Foundation
 {
     var wrappedValue: Value
     {
-        didSet { self.clampWrappedValue() }
+        didSet { self.wrappedValue = range.clamp(wrappedValue) }
     }
     
     private let range : ClosedRange<Value>
@@ -26,13 +26,6 @@ import Foundation
     
     init(wrappedValue: Value, range: ClosedRange<Value>) {
         self.range = range
-//      TODO: Can this be reduced
-        self.wrappedValue = wrappedValue
-        self.clampWrappedValue()
-    }
-    
-    private mutating func clampWrappedValue()
-    {
         self.wrappedValue = range.clamp(wrappedValue)
     }
 }
