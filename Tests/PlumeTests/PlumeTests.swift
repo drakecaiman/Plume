@@ -24,4 +24,11 @@ final class PlumeTests: XCTestCase {
         @Clamped(range: PlumeTests.intClosedRange) var result = testInt
         XCTAssert(result == PlumeTests.intClosedRange.upperBound, "Final value (\(result)) does not equal upper bound of range (\(PlumeTests.intClosedRange.upperBound))")
     }
+    
+    func testInRange() throws
+    {
+        let testValue = 115
+        let clamped = (1...100).clamp(testValue)
+        XCTAssertNotEqual(testValue, clamped)
+    }
 }
