@@ -31,11 +31,12 @@ import Foundation
      Creates a property wrapper that restricts the underlying value to a given closed range.
      
      - Parameters:
-     	- wrappedValue: The initial property value.
-     	- range: The clamping ``Swift.ClosedRange`` for this property.
+        - wrappedValue: The initial property value.
+        - range: The clamping ``Swift.ClosedRange`` for this property.
      - Returns: A new property wrapper that restricts the underlying value to the provided range.
      */
-    init(wrappedValue: Value, range: ClosedRange<Value>) {
+    init(wrappedValue: Value, range: ClosedRange<Value>)
+    {
         self.originalValue = wrappedValue
         self.range = range
     }
@@ -45,8 +46,8 @@ import Foundation
      
      A new `Clamped` property wrapper can be created from a ``Range`` as long as ``Range.Bound`` conforms to ``Strideable`` and  ``Range.Bound.Stride`` is of type ``SignedInteger``.
      - Parameters:
-         - wrappedValue: The initial property value.
-         - range: The clamping ``Swift.Range`` for this property.
+        - wrappedValue: The initial property value.
+        - range: The clamping ``Swift.Range`` for this property.
      - Returns: A new property wrapper that restricts the underlying value to the provided range.
      */
     init(wrappedValue: Value, range: Range<Value>) where Value : Strideable, Value.Stride : SignedInteger
