@@ -31,5 +31,9 @@ final class ClosedRangeClampTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testNoMax() throws {
+//        (0...).clamp
+    }
 
 }
