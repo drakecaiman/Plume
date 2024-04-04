@@ -2,8 +2,6 @@
 //
 //  Created by Duncan on 3/26/24.
 
-import Foundation
-
 /**
  Property wrapper that restricts input to a given range.
  

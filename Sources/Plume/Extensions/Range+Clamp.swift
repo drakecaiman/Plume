@@ -5,8 +5,6 @@
 //  Created by Duncan on 3/27/24.
 //
 
-import Foundation
-
 extension Range where Bound : Strideable, Bound.Stride : SignedInteger {
     /**
      Clamp a value to this range.
