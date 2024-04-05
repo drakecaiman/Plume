@@ -33,7 +33,7 @@
         - range: The clamping ``Swift/ClosedRange`` for this property.
      - Returns: A new property wrapper that restricts the underlying value to the provided range.
      */
-    init(wrappedValue: Value, range: ClosedRange<Value>)
+    public init(wrappedValue: Value, range: ClosedRange<Value>)
     {
         self.originalValue = wrappedValue
         self.range = range
@@ -48,7 +48,7 @@
         - range: The clamping ``Swift/Range`` for this property.
      - Returns: A new property wrapper that restricts the underlying value to the provided range.
      */
-    init(wrappedValue: Value, range: Range<Value>) where Value : Strideable, Value.Stride : SignedInteger
+    public init(wrappedValue: Value, range: Range<Value>) where Value : Strideable, Value.Stride : SignedInteger
     {
         self.init(wrappedValue: wrappedValue, range: ClosedRange(range))
     }
