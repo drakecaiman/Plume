@@ -2,7 +2,7 @@
 //
 //  Created by Duncan on 3/27/24.
 
-extension Comparable {
+public extension Comparable {
     
     /**
      Clamps this value to the given range.
@@ -17,7 +17,7 @@ extension Comparable {
     }
 }
 
-extension Comparable where Self : Strideable, Self.Stride : SignedInteger
+public extension Comparable where Self : Strideable, Self.Stride : SignedInteger
 {
     /**
      Clamps this value to the given range.

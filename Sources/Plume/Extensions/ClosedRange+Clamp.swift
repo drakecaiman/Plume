@@ -5,7 +5,7 @@
 //  Created by Duncan on 3/27/24.
 //
 
-extension ClosedRange
+public extension ClosedRange
 {
     /**
      Clamp a value to this range.

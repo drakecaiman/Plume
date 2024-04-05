@@ -5,7 +5,7 @@
 //  Created by Duncan on 3/27/24.
 //
 
-extension Range where Bound : Strideable, Bound.Stride : SignedInteger {
+public extension Range where Bound : Strideable, Bound.Stride : SignedInteger {
     /**
      Clamp a value to this range.
 
