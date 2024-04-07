@@ -8,28 +8,58 @@
 import XCTest
 
 final class RangeClampTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    static let intRange = 1..<100
+    
+    func testIntRangeClampInRange()
+    {
+        let initialValue = 57
+        let result = RangeClampTests.intRange.clamp(initialValue)
+        XCTAssertEqual(initialValue, result, "Clamping result \(result) should equal initial in-range value \(initialValue)")
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testIntRangeClampAboveRange()
+    {
+        let initialValue = 2515
+        let result = RangeClampTests.intRange.clamp(initialValue)
+        guard let expected = RangeClampTests.intRange.last else
+        {
+            XCTFail("Could not get expected value.")
+            return
         }
+        XCTAssertNotEqual(initialValue, result, "Clamping result \(result) should not equal initial in-range value \(initialValue).")
+        XCTAssertEqual(result, expected, "Clamping result \(result) should equal expected value \(expected).")
     }
-
+    
+    func testIntRangeClampBelowRange()
+    {
+        let initialValue = -487
+        let result = RangeClampTests.intRange.clamp(initialValue)
+        guard let expected = RangeClampTests.intRange.first else
+        {
+            XCTFail("Could not get expected value.")
+            return
+        }
+        XCTAssertNotEqual(initialValue, result, "Clamping result \(result) should not equal initial in-range value \(initialValue).")
+        XCTAssertEqual(result, expected, "Clamping result \(result) should equal expected value \(expected).")
+    }
+    
+    func testIntRangeClampOnUpperBound()
+    {
+        let initialValue = RangeClampTests.intRange.upperBound
+        let result = RangeClampTests.intRange.clamp(initialValue)
+        guard let expected = RangeClampTests.intRange.last else
+        {
+            XCTFail("Could not get expected value.")
+            return
+        }
+        XCTAssertNotEqual(initialValue, result, "Clamping result \(result) should not equal initial in-range value \(initialValue).")
+        XCTAssertEqual(result, expected, "Clamping result \(result) should equal expected value \(expected).")
+    }
+    
+    func testIntRangeClampOnLowerBound()
+    {
+        let initialValue = RangeClampTests.intRange.lowerBound
+        let result = RangeClampTests.intRange.clamp(initialValue)
+        XCTAssertEqual(initialValue, result, "Clamping result \(result) should equal initial in-range value \(initialValue)")
+    }
 }
