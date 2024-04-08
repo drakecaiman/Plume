@@ -14,8 +14,10 @@ jobs:
 
     runs-on: macos-latest
 
-    steps:
+    steps:     
     - uses: actions/checkout@v4
+    - name: Setup Swift
+      uses: swift-actions/setup-swift@v2.0.0
     - name: Build
       run: swift build -v
     - name: Run tests
