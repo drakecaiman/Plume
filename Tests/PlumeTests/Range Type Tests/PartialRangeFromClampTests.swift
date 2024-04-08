@@ -1,5 +1,5 @@
 //
-//  ClosedRangeClampTests.swift
+//  PartialRangeFromClampTests.swift
 //  
 //
 //  Created by Duncan on 4/1/24.
