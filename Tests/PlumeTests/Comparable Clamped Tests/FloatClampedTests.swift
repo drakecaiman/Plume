@@ -1,5 +1,5 @@
 //
-//  IntClampedTests.swift
+//  FloatClampedTests.swift
 //  
 //
 //  Created by Duncan on 4/8/24.
@@ -7,130 +7,69 @@
 
 import XCTest
 
-final class IntClampedTests: XCTestCase
+final class FloatClampedTests: XCTestCase
 {
-    static let int = 12
-    
-    func testClampedInRange()
-    {
-        let range = 0..<100
-        let result = IntClampedTests.int.clamped(to: range)
-        XCTAssertEqual(IntClampedTests.int, result, "Initial value \(IntClampedTests.int) should equal result \(result)")
-    }
-    
-    func testClampedAboveRange()
-    {
-        let range = -100..<0
-        let result = IntClampedTests.int.clamped(to: range)
-        XCTAssertNotEqual(IntClampedTests.int, result, "Initial value \(IntClampedTests.int) should not equal result \(result)")
-        guard let expected = range.last else
-        {
-            XCTFail("Could not get expected value")
-            return
-        }
-        XCTAssertEqual(result, expected, "Result \(result) should equal last element of range \(expected)")
-    }
-    
-    func testClampedBelowRange()
-    {
-        let range = 20..<125
-        let result = IntClampedTests.int.clamped(to: range)
-        XCTAssertNotEqual(IntClampedTests.int, result, "Initial value \(IntClampedTests.int) should not equal result \(result)")
-        guard let expected = range.first else
-        {
-            XCTFail("Could not get expected value")
-            return
-        }
-        XCTAssertEqual(result, expected, "Result \(result) should equal first element of range \(expected)")
-    }
-    
-    func testClampedOnRangeUpperBound()
-    {
-        let range = -12..<12
-        let result = IntClampedTests.int.clamped(to: range)
-        XCTAssertNotEqual(IntClampedTests.int, result, "Initial value \(IntClampedTests.int) should not equal result \(result)")
-        guard let expected = range.last else
-        {
-            XCTFail("Could not get expected value")
-            return
-        }
-        XCTAssertEqual(result, expected, "Result \(result) should equal last element of range \(expected)")
-    }
-    
-    func testClampedOnRangeLowerBound()
-    {
-        let range = 12..<36
-        let result = IntClampedTests.int.clamped(to: range)
-        XCTAssertEqual(IntClampedTests.int, result, "Initial value \(IntClampedTests.int) should  equal result \(result)")
-    }
+    static let float : Float = 41.65
     
     func testClampedInClosedRange()
     {
-        let range = 0...100
-        let result = IntClampedTests.int.clamped(to: range)
-        XCTAssertEqual(IntClampedTests.int, result, "Initial value \(IntClampedTests.int) should equal result \(result)")
+        let range : ClosedRange<Float> = 1.1...10000.15
+        let result = FloatClampedTests.float.clamped(to: range)
+        XCTAssertEqual(FloatClampedTests.float, result, "Initial value \(FloatClampedTests.float) should equal result \(result)")
     }
     
     func testClampedAboveClosedRange()
     {
-        let range = -100...0
-        let result = IntClampedTests.int.clamped(to: range)
-        XCTAssertNotEqual(IntClampedTests.int, result, "Initial value \(IntClampedTests.int) should not equal result \(result)")
-        guard let expected = range.last else
-        {
-            XCTFail("Could not get expected value")
-            return
-        }
+        let range : ClosedRange<Float> = -1030.54...0.25
+        let result = FloatClampedTests.float.clamped(to: range)
+        XCTAssertNotEqual(FloatClampedTests.float, result, "Initial value \(FloatClampedTests.float) should not equal result \(result)")
+        let expected = range.upperBound
         XCTAssertEqual(result, expected, "Result \(result) should equal last element of range \(expected)")
     }
     
     func testClampedBelowClosedRange()
     {
-        let range = 20...125
-        let result = IntClampedTests.int.clamped(to: range)
-        XCTAssertNotEqual(IntClampedTests.int, result, "Initial value \(IntClampedTests.int) should not equal result \(result)")
-        guard let expected = range.first else
-        {
-            XCTFail("Could not get expected value")
-            return
-        }
+        let range : ClosedRange<Float> = 65.74...128.32
+        let result = FloatClampedTests.float.clamped(to: range)
+        XCTAssertNotEqual(FloatClampedTests.float, result, "Initial value \(FloatClampedTests.float) should not equal result \(result)")
+        let expected = range.lowerBound
         XCTAssertEqual(result, expected, "Result \(result) should equal first element of range \(expected)")
     }
     
     func testClampedOnClosedRangeUpperBound()
     {
-        let range = -12...12
-        let result = IntClampedTests.int.clamped(to: range)
-        XCTAssertEqual(IntClampedTests.int, result, "Initial value \(IntClampedTests.int) should  equal result \(result)")
+        let range : ClosedRange<Float> = -34.185...41.65
+        let result = FloatClampedTests.float.clamped(to: range)
+        XCTAssertEqual(FloatClampedTests.float, result, "Initial value \(FloatClampedTests.float) should  equal result \(result)")
     }
     
     func testClampedOnClosedRangeLowerBound()
     {
-        let range = 12...36
-        let result = IntClampedTests.int.clamped(to: range)
-        XCTAssertEqual(IntClampedTests.int, result, "Initial value \(IntClampedTests.int) should  equal result \(result)")
+        let range : ClosedRange<Float> = 41.65...2482.109
+        let result = FloatClampedTests.float.clamped(to: range)
+        XCTAssertEqual(FloatClampedTests.float, result, "Initial value \(FloatClampedTests.float) should  equal result \(result)")
     }
     
     func testClampedInPartialRangeFrom()
     {
-        let range = 0...
-        let result = IntClampedTests.int.clamped(to: range)
-        XCTAssertEqual(IntClampedTests.int, result, "Initial value \(IntClampedTests.int) should equal result \(result)")
+        let range : PartialRangeFrom<Float> = 0.0...
+        let result = FloatClampedTests.float.clamped(to: range)
+        XCTAssertEqual(FloatClampedTests.float, result, "Initial value \(FloatClampedTests.float) should equal result \(result)")
     }
     
     func testClampedBelowPartialRangeFrom()
     {
-        let range = 20...
-        let result = IntClampedTests.int.clamped(to: range)
-        XCTAssertNotEqual(IntClampedTests.int, result, "Initial value \(IntClampedTests.int) should not equal result \(result)")
+        let range : PartialRangeFrom<Float> = 50.12...
+        let result = FloatClampedTests.float.clamped(to: range)
+        XCTAssertNotEqual(FloatClampedTests.float, result, "Initial value \(FloatClampedTests.float) should not equal result \(result)")
         let expected = range.lowerBound
         XCTAssertEqual(result, expected, "Result \(result) should equal first element of range \(expected)")
     }
     
     func testClampedOnPartialRangeFromLowerBound()
     {
-        let range = 12...
-        let result = IntClampedTests.int.clamped(to: range)
-        XCTAssertEqual(IntClampedTests.int, result, "Initial value \(IntClampedTests.int) should  equal result \(result)")
+        let range : PartialRangeFrom<Float> = 41.65...
+        let result = FloatClampedTests.float.clamped(to: range)
+        XCTAssertEqual(FloatClampedTests.float, result, "Initial value \(FloatClampedTests.float) should  equal result \(result)")
     }
 }
