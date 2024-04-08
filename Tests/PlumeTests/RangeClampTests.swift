@@ -21,12 +21,12 @@ final class RangeClampTests: XCTestCase {
     {
         let initialValue = 2515
         let result = RangeClampTests.intRange.clamp(initialValue)
+        XCTAssertNotEqual(initialValue, result, "Clamping result \(result) should not equal initial in-range value \(initialValue).")
         guard let expected = RangeClampTests.intRange.last else
         {
             XCTFail("Could not get expected value.")
             return
         }
-        XCTAssertNotEqual(initialValue, result, "Clamping result \(result) should not equal initial in-range value \(initialValue).")
         XCTAssertEqual(result, expected, "Clamping result \(result) should equal expected value \(expected).")
     }
     
@@ -34,12 +34,12 @@ final class RangeClampTests: XCTestCase {
     {
         let initialValue = -487
         let result = RangeClampTests.intRange.clamp(initialValue)
+        XCTAssertNotEqual(initialValue, result, "Clamping result \(result) should not equal initial in-range value \(initialValue).")
         guard let expected = RangeClampTests.intRange.first else
         {
             XCTFail("Could not get expected value.")
             return
         }
-        XCTAssertNotEqual(initialValue, result, "Clamping result \(result) should not equal initial in-range value \(initialValue).")
         XCTAssertEqual(result, expected, "Clamping result \(result) should equal expected value \(expected).")
     }
     
@@ -47,12 +47,12 @@ final class RangeClampTests: XCTestCase {
     {
         let initialValue = RangeClampTests.intRange.upperBound
         let result = RangeClampTests.intRange.clamp(initialValue)
+        XCTAssertNotEqual(initialValue, result, "Clamping result \(result) should not equal initial in-range value \(initialValue).")
         guard let expected = RangeClampTests.intRange.last else
         {
             XCTFail("Could not get expected value.")
             return
         }
-        XCTAssertNotEqual(initialValue, result, "Clamping result \(result) should not equal initial in-range value \(initialValue).")
         XCTAssertEqual(result, expected, "Clamping result \(result) should equal expected value \(expected).")
     }
     
