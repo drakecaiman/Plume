@@ -14,17 +14,21 @@ final class ClampedTests: XCTestCase
     
     func testIntInRange() throws
     {
-        let testInt = 7
-        @Clamped(range: ClampedTests.intRange) var result = testInt
-//        XCTAssert(result == testInt, "Matches")
-        XCTFail("Test is not implemented")
+        let initial = 7
+        @Clamped(range: ClampedTests.intRange) var result = initial
+        XCTAssertEqual(initial, result, "Initial value \(initial) should equal result \(result)")
     }
     
-    func testOutOfRange() throws
+    func testIntAboveRange() throws
     {
-        let testInt = 75
-//        @Clamped(range: PlumeTests.intClosedRange) var result = testInt
-//        XCTAssert(result == PlumeTests.intClosedRange.upperBound, "Final value (\(result)) does not equal upper bound of range (\(PlumeTests.intClosedRange.upperBound))")
-        XCTFail("Test is not implemented")
+        let initial = 108
+        @Clamped(range: ClampedTests.intRange) var result = initial
+        XCTAssertNotEqual(initial, result, "Initial value \(initial) should not equal result \(result)")
+        guard let expected = ClampedTests.intRange.last else
+        {
+            XCTFail("Could not get expected value")
+            return
+        }
+        XCTAssertEqual(result, expected, "Clamped value \(result) should equal last element of range \(expected)")
     }
 }
