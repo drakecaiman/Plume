@@ -52,4 +52,18 @@
     {
         self.init(wrappedValue: wrappedValue, range: ClosedRange(range))
     }
+    
+    /**
+     Creates a property wrapper that restricts the underlying value to a given partial interval, defined by its lower bound.
+     
+     - Parameters:
+        - wrappedValue: The initial property value.
+        - range: The clamping ``Swift/PartialRangeFrom`` for this property.
+     - Returns: A new property wrapper that restricts the underlying value to the provided range.
+     */
+//    public init(wrappedValue: Value, range: PartialRangeFrom<Value>)
+//    {
+//        self.originalValue = wrappedValue
+//        self.range = range
+//    }
 }

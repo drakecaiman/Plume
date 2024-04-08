@@ -15,6 +15,18 @@ public extension Comparable {
     {
         return range.clamp(self)
     }
+    
+    /**
+     Clamps this value to the given range.
+     
+     - Parameters:
+        - range: The expected ``Swift/PartialRangeFrom`` for this value.
+     - Returns: This value clamped to the given range.
+     */
+    func clamped(to range: PartialRangeFrom<Self>) -> Self
+    {
+        return range.clamp(self)
+    }
 }
 
 public extension Comparable where Self : Strideable, Self.Stride : SignedInteger
