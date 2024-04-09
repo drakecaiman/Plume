@@ -31,4 +31,17 @@ final class ClampedTests: XCTestCase
         }
         XCTAssertEqual(result, expected, "Clamped value \(result) should equal last element of range \(expected)")
     }
+    
+    func testIntBelowRange() throws
+    {
+        let initial = -15
+        @Clamped(range: ClampedTests.intRange) var result = initial
+        XCTAssertNotEqual(initial, result, "Initial value \(initial) should not equal result \(result)")
+        guard let expected = ClampedTests.intRange.first else
+        {
+            XCTFail("Could not get expected value")
+            return
+        }
+        XCTAssertEqual(result, expected, "Clamped value \(result) should equal first element of range \(expected)")
+    }
 }
