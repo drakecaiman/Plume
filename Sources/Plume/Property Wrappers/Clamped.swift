@@ -6,6 +6,8 @@
  Property wrapper that restricts input to a given range.
  
  `Clamped` takes a range of ``Swift/Comparable`` values and ensures that any value assigned to falls within it. Values less than the lower bound of the range will be set to the lower bound, while values greater than the range's upper bound will be set to the highest included value of the range (either the upper bound for a closed range or the next highest value for a half-open range).
+ 
+ @Snippet(path: "Plume/Snippets/Clamped")
  */
 @propertyWrapper public struct Clamped<Value : Comparable>
 {
