@@ -5,7 +5,7 @@
 //  Created by Duncan on 3/27/24.
 //
 
-public extension PartialRangeThrough
+extension PartialRangeThrough : Clamping
 {
     /**
      Clamp a value to this range.
@@ -14,7 +14,7 @@ public extension PartialRangeThrough
         - value: The value to clamp.
      - Returns: The value clamped to the bounds of this range.
      */
-    func clamp(_ value: Bound) -> Bound
+    public func clamp(_ value: Bound) -> Bound
     {
         return Swift.min(value, self.upperBound)
     }

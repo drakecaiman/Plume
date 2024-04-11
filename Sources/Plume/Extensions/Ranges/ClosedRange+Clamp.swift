@@ -5,8 +5,8 @@
 //  Created by Duncan on 3/27/24.
 //
 
-public extension ClosedRange
-{
+extension ClosedRange : Clamping
+{    
     /**
      Clamp a value to this range.
      
@@ -14,7 +14,7 @@ public extension ClosedRange
         - value: The value to clamp.
      - Returns: The value clamped to the bounds of this range.
      */
-    func clamp(_ value: Bound) -> Bound
+    public func clamp(_ value: Bound) -> Bound
     {
         return Swift.min(Swift.max(value, self.lowerBound), self.upperBound)
     }
