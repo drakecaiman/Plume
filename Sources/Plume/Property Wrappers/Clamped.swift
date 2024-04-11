@@ -14,8 +14,8 @@
 //	MARK: Properties
 ///	The unclamped, originally input value.
     private var originalValue : Value
-///	The enclosing range for the underlying property's values.
-    private let range : ClosedRange<Value>
+///	The enclosing range (or other  type that conforms to ``Clamping``) for the underlying property's values.
+    private let range : any Clamping<Value>
     
 //	MARK: Property Wrapper Conformance
 ///	The clamped value.
@@ -28,44 +28,16 @@
 //	MARK: -
 //	MARK: Initializers
     /**
-     Creates a property wrapper that restricts the underlying value to a given closed range.
+     Creates a property wrapper that restricts the underlying value to a provided interval.
      
      - Parameters:
         - wrappedValue: The initial property value.
-        - range: The clamping ``Swift/ClosedRange`` for this property.
+        - range: A ``Clamping`` value, typically a range.
      - Returns: A new property wrapper that restricts the underlying value to the provided range.
      */
-    public init(wrappedValue: Value, range: ClosedRange<Value>)
+    public init(wrappedValue: Value, range: any Clamping<Value>)
     {
         self.originalValue = wrappedValue
         self.range = range
     }
-    
-    /**
-     Creates a property wrapper that restricts the underlying value to a given half-open range.
-     
-     A new `Clamped` property wrapper can be created from a ``Swift/Range`` as long as ``Swift/Range.Bound`` conforms to ``Swift/Strideable`` and  ``Swift/Range.Bound.Stride`` is of type ``Swift/SignedInteger``.
-     - Parameters:
-        - wrappedValue: The initial property value.
-        - range: The clamping ``Swift/Range`` for this property.
-     - Returns: A new property wrapper that restricts the underlying value to the provided range.
-     */
-    public init(wrappedValue: Value, range: Range<Value>) where Value : Strideable, Value.Stride : SignedInteger
-    {
-        self.init(wrappedValue: wrappedValue, range: ClosedRange(range))
-    }
-    
-    /**
-     Creates a property wrapper that restricts the underlying value to a given partial interval, defined by its lower bound.
-     
-     - Parameters:
-        - wrappedValue: The initial property value.
-        - range: The clamping ``Swift/PartialRangeFrom`` for this property.
-     - Returns: A new property wrapper that restricts the underlying value to the provided range.
-     */
-//    public init(wrappedValue: Value, range: PartialRangeFrom<Value>)
-//    {
-//        self.originalValue = wrappedValue
-//        self.range = range
-//    }
 }
