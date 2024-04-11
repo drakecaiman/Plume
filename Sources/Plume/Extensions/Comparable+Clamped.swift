@@ -2,43 +2,16 @@
 //
 //  Created by Duncan on 3/27/24.
 
-public extension Comparable {
-    
-    /**
-     Clamps this value to the given range.
-     
-     - Parameters:
-    	- range: The expected ``Swift/ClosedRange`` for this value.
-     - Returns: This value clamped to the given range.
-     */
-    func clamped(to range: ClosedRange<Self>) -> Self
-    {
-        return range.clamp(self)
-    }
-    
-    /**
-     Clamps this value to the given range.
-     
-     - Parameters:
-        - range: The expected ``Swift/PartialRangeFrom`` for this value.
-     - Returns: This value clamped to the given range.
-     */
-    func clamped(to range: PartialRangeFrom<Self>) -> Self
-    {
-        return range.clamp(self)
-    }
-}
-
-public extension Comparable where Self : Strideable, Self.Stride : SignedInteger
+public extension Comparable
 {
     /**
      Clamps this value to the given range.
      
      - Parameters:
-        - range: The expected ``Swift/Range`` for this value.
+        - range: The expected ``Clamping`` range for this value.
      - Returns: This value clamped to the given range.
      */
-    func clamped(to range: Range<Self>) -> Self
+    func clamped(to range: any Clamping<Self>) -> Self
     {
         return range.clamp(self)
     }
