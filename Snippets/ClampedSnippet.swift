@@ -1,4 +1,5 @@
 // Here's an example of `@Clamped` in use
+import Plume
 
 @Clamped(range: 0...100) var percent = 0
 print(percent) // `0`
