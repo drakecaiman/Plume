@@ -26,6 +26,15 @@
     }
     
 //	MARK: -
+    
+    /**
+     Errors pertaining to the creation of new `@Clamped` instances
+     */
+    public enum ClampedInitError : Error {
+        /// Neither a lower nor upper bound was provided
+        case noBounds
+    }
+    
 //	MARK: Initializers
     /**
      Creates a property wrapper that restricts the underlying value to a provided interval.
@@ -39,5 +48,40 @@
     {
         self.originalValue = wrappedValue
         self.range = range
+    }
+    
+    public init(wrappedValue: Value, from lowerBound: Value? = nil, to upperBound: Value? = nil) throws
+    {
+        self.originalValue = wrappedValue
+        switch (lowerBound, upperBound)
+        {
+        case (let lowerBound?, let upperBound?):
+            self.range = lowerBound...upperBound
+            return
+        case (let lowerBound?, nil):
+            self.range = lowerBound...
+        case (nil, let upperBound?):
+            self.range = ...upperBound
+        default:
+            throw ClampedInitError.noBounds
+        }
+    }
+    
+    public init(wrappedValue: Value, from lowerBound: Value? = nil, upTo upperBound: Value? = nil) throws
+    where Value : Strideable, Value.Stride : SignedInteger
+    {
+        self.originalValue = wrappedValue
+        switch (lowerBound, upperBound)
+        {
+        case (let lowerBound?, let upperBound?):
+            self.range = lowerBound..<upperBound
+            return
+        case (let lowerBound?, nil):
+            self.range = lowerBound...
+        case (nil, let upperBound?):
+            self.range = ..<upperBound
+        default:
+            throw ClampedInitError.noBounds
+        }
     }
 }
