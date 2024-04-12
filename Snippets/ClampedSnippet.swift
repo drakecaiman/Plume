@@ -11,7 +11,7 @@ struct Review
     @Clamped(range: 0...5) var rating = 0
 }
 
-var myReview = Review(name: "Could have been better!",
+let myReview = Review(name: "Could have been better!",
                       content: "…",
                       rating: 3)
 print(myReview.rating) // `3`
