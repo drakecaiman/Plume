@@ -5,6 +5,7 @@
 //  Created by Duncan on 3/27/24.
 //
 
+/// Adds clamping functionality to `Range`.
 extension Range : Clamping where Bound : Strideable, Bound.Stride : SignedInteger {
     /**
      Clamp a value to this range.

@@ -5,6 +5,7 @@
 //  Created by Duncan on 3/27/24.
 //
 
+/// Adds clamping functionality to `PartialRangeUpTo`.
 extension PartialRangeUpTo : Clamping where Bound : Strideable, Bound.Stride : SignedInteger
 {
     /**

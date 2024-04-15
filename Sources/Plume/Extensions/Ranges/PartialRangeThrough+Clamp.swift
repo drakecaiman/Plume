@@ -5,6 +5,7 @@
 //  Created by Duncan on 3/27/24.
 //
 
+/// Adds clamping functionality to `PartialRangeThrough`.
 extension PartialRangeThrough : Clamping
 {
     /**

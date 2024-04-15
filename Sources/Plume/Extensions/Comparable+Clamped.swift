@@ -2,6 +2,7 @@
 //
 //  Created by Duncan on 3/27/24.
 
+/// Support for clamping on supported types.
 public extension Comparable
 {
     /**
