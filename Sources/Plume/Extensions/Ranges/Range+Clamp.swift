@@ -6,7 +6,7 @@
 //
 
 /// Adds clamping functionality to `Range`.
-extension Range : Clamping where Bound : Strideable, Bound.Stride : SignedInteger {
+extension Range : Clamping where Bound : Steppable {
     /**
      Clamp a value to this range.
 
@@ -15,6 +15,6 @@ extension Range : Clamping where Bound : Strideable, Bound.Stride : SignedIntege
      - Returns: The value clamped to the bounds of this range.
      */
     public func clamp(_ value: Bound) -> Bound {
-        return ClosedRange(self).clamp(value)
+        return (self.lowerBound...self.upperBound.steppedDown()).clamp(value)
     }
 }

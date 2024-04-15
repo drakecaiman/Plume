@@ -6,7 +6,7 @@
 //
 
 /// Adds clamping functionality to `PartialRangeUpTo`.
-extension PartialRangeUpTo : Clamping where Bound : Strideable, Bound.Stride : SignedInteger
+extension PartialRangeUpTo : Clamping where Bound : Steppable
 {
     /**
      Clamp a value to this range.
@@ -17,6 +17,6 @@ extension PartialRangeUpTo : Clamping where Bound : Strideable, Bound.Stride : S
      */
     public func clamp(_ value: Bound) -> Bound
     {
-        return PartialRangeThrough(self.upperBound.advanced(by: -1)).clamp(value)
+        return PartialRangeThrough(self.upperBound.steppedDown()).clamp(value)
     }
 }
