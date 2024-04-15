@@ -15,4 +15,6 @@ Restrict a value to a given range.
 
 ### Keeping a property's value within a given range
 
+Keep the assigned values of a property or variable in a given range.
+
 - ``Clamped``
