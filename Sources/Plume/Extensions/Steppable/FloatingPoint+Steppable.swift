@@ -8,11 +8,13 @@
 /// Support for ``Steppable`` in `FloatingPoint`
 extension FloatingPoint where Self : Steppable
 {
-    func steppedUp() -> Self {
+    public func steppedUp() -> Self {
         return self.nextUp
     }
     
-    func steppedDown() -> Self {
+    public func steppedDown() -> Self {
         return self.nextDown
     }
 }
+
+extension Double : Steppable {}
