@@ -1,12 +1,12 @@
 //
-//  PartialRangeFrom+Clamp.swift
-//  
+//  PartialRangeUpTo+Clamping.swift
+//
 //
 //  Created by Duncan on 3/27/24.
 //
 
-/// Adds clamping functionality to `PartialRangeFrom`.
-extension PartialRangeFrom : Clamping
+/// Adds clamping functionality to `PartialRangeUpTo`.
+extension PartialRangeUpTo : Clamping where Bound : Steppable
 {
     /**
      Clamp a value to this range.
@@ -17,6 +17,6 @@ extension PartialRangeFrom : Clamping
      */
     public func clamp(_ value: Bound) -> Bound
     {
-        return Swift.max(value, self.lowerBound)
+        return PartialRangeThrough(self.upperBound.steppedDown()).clamp(value)
     }
 }

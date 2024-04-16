@@ -1,6 +1,6 @@
 //
-//  Range+Clamp.swift
-//  
+//  Range+Clamping.swift
+//
 //
 //  Created by Duncan on 3/27/24.
 //
