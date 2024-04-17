@@ -13,5 +13,5 @@ let aboveRange = range.clamp(110) // 100
 let belowRange = range.clamp(-25) // 0
 
 //snippet.floatRange
-let openRange = (0.0...<10.0)
+let openRange = (0.0..<10.0)
 let clamped = openRange.clamp(100) // 9.99…
